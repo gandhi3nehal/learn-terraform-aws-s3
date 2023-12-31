@@ -94,7 +94,7 @@ resource "random_integer" "product" {
 resource "aws_s3_object" "index" {
   key    = "index.html"
   bucket = aws_s3_bucket.www_bucket.id
-  content = templatefile("${path.module}/files/index.html", {
+  content = templatefile("./files/index.html", {
     product_name  = local.hashi_products[random_integer.product.result].name
     product_color = local.hashi_products[random_integer.product.result].color
     product_image = local.hashi_products[random_integer.product.result].image_file
