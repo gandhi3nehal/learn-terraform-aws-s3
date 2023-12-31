@@ -103,10 +103,10 @@ resource "aws_s3_object" "index" {
 }
 
 resource "aws_s3_object" "images" {
-  for_each     = fileset("${path.module}/files/img/", "*.png")
+  for_each     = fileset("./files/img/", "*.png")
   bucket       = aws_s3_bucket.www_bucket.id
   key          = "img/${each.value}"
-  source       = "${path.module}/files/img/${each.value}"
+  source       = "./files/img/${each.value}"
   content_type = "image/png"
 }
 
